@@ -189,6 +189,8 @@ public class BasePage {
         js.executeScript("arguments[0].scrollIntoView(true);", facebookPageLink);
         sleep();
         facebookPageLink.click();
+        sleep();
+        sleep();
         String parentTab = driver.getWindowHandle();
         ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
