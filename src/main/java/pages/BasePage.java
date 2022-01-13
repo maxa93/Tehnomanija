@@ -123,7 +123,7 @@ public class BasePage {
 
     public BasePage clickPrijavaModalButton(){
         prijavaModalButton.click();
-        loginDropdown.isDisplayed();
+        assert loginDropdown.isDisplayed():"LoginDropdown in NOT present";
         return this;
     }
 
@@ -133,7 +133,7 @@ public class BasePage {
     }
 
     public BasePage loginDropdown(){
-        loginDropdown.isDisplayed();
+        assert  loginDropdown.isDisplayed():"LoginDropdown in NOT present";
         return this;
     }
 
