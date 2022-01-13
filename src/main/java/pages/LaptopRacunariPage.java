@@ -118,8 +118,8 @@ public class LaptopRacunariPage extends BasePage{
         return this;
     }
 
-    public LaptopRacunariPage itemNumberInShoopingCart(){
-        shoppingCartBadge.isDisplayed();
+    public LaptopRacunariPage itemNumberInShoppingCart(){
+        assert shoppingCartBadge.isDisplayed():"Shopping cart badge in NOT present";
         return this;
     }
 
