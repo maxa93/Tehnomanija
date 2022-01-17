@@ -183,7 +183,7 @@ public class LaptopRacunariPage extends BasePage{
     public LaptopRacunariPage clickOnItem(String itemName) {
         List<WebElement> elements = driver.findElements(By.xpath("//a[@class='product-link']"));
         assert elements.size()!=0 : "Array is empty";
-        elements.get(0).click();
+        elements.get(1).click();
         return this;
     }
     //metoda za shooping cart item number
