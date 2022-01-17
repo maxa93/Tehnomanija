@@ -32,7 +32,7 @@ public class SortingTest extends BaseTest{
         driver = openChromeDriver();
         try {
             print("Navigate to https:https://www.tehnomanija.rs/ and accept cookies");
-            BasePage basePage = new LaptopRacunariPage(driver).clickSlazemSeButton();
+            BasePage basePage = new BasePage(driver).clickSlazemSeButton();
             print("Pass the mouse over burger menu");
             basePage.mouseHoverBurgerMenuButton();
             print("Pass the mouse over it shop");
@@ -75,7 +75,7 @@ public class SortingTest extends BaseTest{
         driver = openChromeDriver();
         try {
             print("Navigate to https:https://www.tehnomanija.rs/ and accept cookies");
-            BasePage basePage = new LaptopRacunariPage(driver).clickSlazemSeButton();
+            BasePage basePage = new BasePage(driver).clickSlazemSeButton();
             print("Pass the mouse over burger menu");
             basePage.mouseHoverBurgerMenuButton();
             print("Pass the mouse over it shop");
