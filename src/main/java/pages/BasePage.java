@@ -49,7 +49,7 @@ public class BasePage {
     @FindBy(xpath = "//div//a[@title='Svi laptopovi']")
     WebElement sviLaptopoviButton;
 
-    @FindBy(className = "user-name")
+    @FindBy(xpath = "//span[@class='user-name']")
     WebElement prijavaModalButton;
 
     @FindBy(id = "login_dropdown")
