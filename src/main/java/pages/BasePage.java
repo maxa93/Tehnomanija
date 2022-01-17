@@ -112,7 +112,7 @@ public class BasePage {
     }
 
     public BasePage isDisplayedLiveChatWidget(){
-        liveChatWidget.isDisplayed();
+        assert liveChatWidget.isDisplayed():"LiveChatWidget in NOT present";
         return this;
     }
 
@@ -123,7 +123,7 @@ public class BasePage {
 
     public BasePage clickPrijavaModalButton(){
         prijavaModalButton.click();
-        assert loginDropdown.isDisplayed():"LoginDropdown in NOT present";
+        assert prijavaModalButton.isDisplayed():"PrijavaModalButton in NOT present";
         return this;
     }
 
