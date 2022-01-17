@@ -38,7 +38,7 @@ public class Strings {//Usernames and passwords
     public static final String ASUS_LAPTOP = "Asus Laptop ZenBook UX363JA-WB502T, 13,3\"/Intel i5-1035G4/8 GB/512 GB SSD/Windows 10 Home";
     public static final String HP_LAPTOP = "HP Laptop Elite Dragonty 10U25EA 13,3\"/Intel Core i5-8265U/16 GB ";
     public static final String HP_LAPTOP_SPECTRE = "HP Laptop Spectre x360 Convertible 14-ea0057nn 13,5\"/Intel Core i";
-    public static final String HP_LAPTOP_SPECTRE_X360 = "HP Laptop Spectre x360";
+    public static final String HP_LAPTOP_SPECTRE_X360 = "HP Laptop Spectre x360 Convertible 14-ea0057nn";
 
     //sort options
     public static final String SORT_BY_PRICE_DESCENDING = "Ceni opadajuće";
