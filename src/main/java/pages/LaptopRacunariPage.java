@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class LaptopRacunariPage extends BasePage{
+public class LaptopRacunariPage extends BasePage {
 
     //Web elementi
     @FindBy(xpath = "//div//label[text()='Acer']")
@@ -64,19 +64,19 @@ public class LaptopRacunariPage extends BasePage{
 
     public LaptopRacunariPage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
         this.driver = driver;
         sleep();
     }
 
     //Metode nad web elementima
 
-    public LaptopRacunariPage clickOnAcerCheckboxField(){
+    public LaptopRacunariPage clickOnAcerCheckboxField() {
         acerCheckboxField.click();
         return this;
     }
 
-    public LaptopRacunariPage clickSortDropdownMenu(){
+    public LaptopRacunariPage clickSortDropdownMenu() {
         sortDropdownMenu.click();
         return this;
     }
@@ -92,106 +92,113 @@ public class LaptopRacunariPage extends BasePage{
 //        return new ShoppingCartPage(driver);
 //    }
 
-    public LaptopRacunariPage clickSortByPoNazivu(){
+    public LaptopRacunariPage clickSortByPoNazivu() {
         sortDropdownMenu.click();
         waitForElement(sortByPoNazivu);
         sortByPoNazivu.click();
         return this;
     }
 
-    public LaptopRacunariPage clickSortByPoCeniRastuce(){
+    public LaptopRacunariPage clickSortByPoCeniRastuce() {
         sortDropdownMenu.click();
         waitForElement(sortByCeniRastuce);
         sortByCeniRastuce.click();
         return this;
     }
 
-    public LaptopRacunariPage clickSortByPoCeniOpadajuce(){
+    public LaptopRacunariPage clickSortByPoCeniOpadajuce() {
         sortDropdownMenu.click();
         waitForElement(sortByCeniOpadajuce);
         sortByCeniOpadajuce.click();
         return this;
     }
 
-    public LaptopRacunariPage addToCartLenovoLaptop(){
+    public LaptopRacunariPage addToCartLenovoLaptop() {
         addToCartLenovoLaptop.click();
         return this;
     }
 
-    public LaptopRacunariPage itemNumberInShoppingCart(){
-        assert shoppingCartBadge.isDisplayed():"Shopping cart badge in NOT present";
+    public LaptopRacunariPage itemNumberInShoppingCart() {
+        assert shoppingCartBadge.isDisplayed() : "Shopping cart badge in NOT present";
         return this;
     }
 
-    public LaptopRacunariPage removeItemFromCart(){
+    public LaptopRacunariPage removeItemFromCart() {
         removeItemFromSoppingCart.click();
         driver.navigate().refresh(); //broj 1 ostaje i posle klika na remove button gubi se tek kada se stranica refresuje
         return this;
     }
+
     //uzimamo cenu proizvoda
     public List<String> getAllItemPrices() {
         List<WebElement> itemPricesElements = driver.findElements(By.xpath("//div[@class='price']"));
         List<String> itemPricesList = new ArrayList<String>();
-        for(WebElement itemPrice : itemPricesElements) {
+        for (WebElement itemPrice : itemPricesElements) {
             String price = itemPrice.getText();
             price = price.trim().replaceAll("RSD", "");
-            price = price.replaceAll("\\.","");
-            price = price.replaceAll("\s","");
-            price = price.replaceAll(",",".");
+            price = price.replaceAll("\\.", "");
+            price = price.replaceAll("\s", "");
+            price = price.replaceAll(",", ".");
             itemPricesList.add(price);
         }
         return itemPricesList;
     }
+
     //uzimamo name listu pre sortiranja
     public List<String> getAllItemNames() {
         List<WebElement> itemNamesElements = driver.findElements(By.xpath("//div[@class='product-name-grid']"));
         List<String> itemNamesList = new ArrayList<String>();
-        for(WebElement itemName : itemNamesElements) {
+        for (WebElement itemName : itemNamesElements) {
             String name = itemName.getText();
             itemNamesList.add(name);
         }
         return itemNamesList;
 
     }
+
     //uzimamo name listu posle sortiranja
     public List<String> getAllItemNamesAfterSort() {
         List<WebElement> itemNamesElements = driver.findElements(By.xpath("//div[@class='product-name-grid']"));
         List<String> itemNamesList = new ArrayList<String>();
-        for(WebElement itemName : itemNamesElements) {
+        for (WebElement itemName : itemNamesElements) {
             String name = itemName.getText();
             itemNamesList.add(name);
         }
         return itemNamesList;
     }
+
     public ShoppingCartPage addItemToCartAndGoToCart(String itemName) {
         String customXpath = "//a[@data-blue-product-name='" + itemName + "']";
         List<WebElement> elements = driver.findElements(By.xpath(customXpath));
-        assert elements.size()!=0 : "Array is empty";
+        assert elements.size() != 0 : "Array is empty";
         elements.get(0).click();
         waitForElement(zavrsiKupovinuButton);
         zavrsiKupovinuButton.click();
         return new ShoppingCartPage(driver);
     }
+
     public LaptopRacunariPage addItemToCart(String itemName) {
         String customXpath = "//a[@data-blue-product-name='" + itemName + "']";
         List<WebElement> elements = driver.findElements(By.xpath(customXpath));
-        assert elements.size()!=0 : "Array is empty";
+        assert elements.size() != 0 : "Array is empty";
         elements.get(0).click();
         return this;
     }
 
-    public LaptopRacunariPage clickOnItem(String itemName) {
+    public SelectedProductPage clickOnItem(String itemName) {
         List<WebElement> elements = driver.findElements(By.xpath("//a[@class='product-link']"));
-        assert elements.size()!=0 : "Array is empty";
+        assert elements.size() != 0 : "Array is empty";
         elements.get(0).click();
-        return this;
+        return new SelectedProductPage(driver);
     }
+
     //metoda za shooping cart item number
-    public boolean  isShoppingCartEmpty() {
+    public boolean isShoppingCartEmpty() {
         boolean isShoppingCartNumberShown = false;
         try {
             isShoppingCartNumberShown = numberOfItemsInCartBadge.isDisplayed();
-        }catch (Exception error) {}
+        } catch (Exception error) {
+        }
         return isShoppingCartNumberShown;
     }
 
@@ -201,4 +208,17 @@ public class LaptopRacunariPage extends BasePage{
         return Integer.valueOf(number);
     }
 
+    public LaptopRacunariPage verifySorting(List itemNamesSorted) {
+        for (int i = 0; i < itemNamesSorted.size() - 1; i++) {
+            String first = String.valueOf(itemNamesSorted.get(i));
+            String second = String.valueOf(itemNamesSorted.get(i + 1));
+            if (second != first)
+                System.out.println("ERROR. Array is not sorted");
+            print("Actual : " + itemNamesSorted.get(i) + " Expected : " + itemNamesSorted.get(i));
+        }
+        return this;
+
+    }
 }
+
+
