@@ -3,10 +3,7 @@ package tests;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.BasePage;
-import pages.LaptopRacunariPage;
-import pages.ShoppingCartPage;
-import pages.Strings;
+import pages.*;
 
 public class ShoppingTest extends BaseTest{  //mozda neki od ova 3 testa ne bude radio jer nema proizvoda na lageru,
                                             // u tom slucaju se samo zameni proizvod
@@ -105,10 +102,11 @@ public class ShoppingTest extends BaseTest{  //mozda neki od ova 3 testa ne bude
             print("Enter product name in search text field");
             LaptopRacunariPage laptopRacunariPage = basePage.enterSearchBoxField(Strings.HP_LAPTOP_SPECTRE_X360);
             print("Find item from search result and click on it");
-            laptopRacunariPage.clickOnItem(Strings.HP_LAPTOP_SPECTRE);
+            SelectedProductPage selectedProductPage = laptopRacunariPage.clickOnItem(Strings.HP_LAPTOP_SPECTRE);
             print("Verify that the same item you searched is shown on item page");
-            String actualTitle = driver.findElement(By.xpath("//h1[@id='fnc-product-name-161300']")).getText();
-            assert "HP Laptop Spectre x360 Convertible 14-ea0057nn 13,5\"/Intel Core i".contains(actualTitle) : "Error. Expected title to be: " + "HP Laptop Spectre x360 Convertible 14-ea0057nn 13,5\"/Intel Core i" + ".Actual: " + actualTitle;
+            assert selectedProductPage.ActualTitle().contains(Strings.HP_LAPTOP_SPECTRE): "Error. Expected title to be: " + "HP Laptop Spectre x360 Convertible 14-ea0057nn 13,5\"/Intel Core i";
+          //  String actualTitle = driver.findElement(By.xpath("//h1[@id='fnc-product-name-161300']")).getText();
+          //  assert "HP Laptop Spectre x360 Convertible 14-ea0057nn 13,5\"/Intel Core i".contains(actualTitle) : "Error. Expected title to be: " + "HP Laptop Spectre x360 Convertible 14-ea0057nn 13,5\"/Intel Core i" + ".Actual: " + actualTitle;
 
 
         } finally {
