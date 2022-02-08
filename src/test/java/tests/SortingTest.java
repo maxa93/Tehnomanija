@@ -121,17 +121,10 @@ public class SortingTest extends BaseTest{
             print("Sort items by name");
             List<String> itemNamesUnsorted = laptopRacunariPage.getAllItemNames();
             laptopRacunariPage.clickSortByPoNazivu();
-            List<String> itemNamesSorted = laptopRacunariPage.getAllItemNames();
             print("Verify that item sorted by name ");
-            List<String> itemNamesAfterSort = laptopRacunariPage.getAllItemNamesAfterSort();
-            for(int i = 0; i<itemNamesSorted.size()-1; i++) {
-                String first = String.valueOf(itemNamesSorted.get(i));
-                String second = String.valueOf(itemNamesSorted.get(i+1));
-                if (second == first)
-                    System.out.println("ERROR. Array is not sorted");
-                print("Actual : "+itemNamesAfterSort.get(i)+" Expected : "+ itemNamesSorted.get(i));
-                Assert.assertTrue(itemNamesAfterSort.get(i).equals(itemNamesSorted.get(i)));
-            }
+            List<String> itemNamesSorted = laptopRacunariPage.getAllItemNames();
+            laptopRacunariPage.verifySorting(itemNamesSorted);
+            Assert.assertNotEquals(itemNamesUnsorted,itemNamesSorted);
         } finally {
            driver.quit();
         }
