@@ -2,8 +2,8 @@ package pages;
 
 public class Strings {//Usernames and passwords
     //Usernames and passwords
-    public static final String VALID_EMAIL = "nnmaxa@gmail.com";
-    public static final String VALID_PASSWORD = "Tehnomanija123!";
+    public static final String VALID_EMAIL = "";
+    public static final String VALID_PASSWORD = "";
     public static final String INVALID_EMAIL = "123abc";
     public static final String INVALID_PASSWORD = "";
     public static final String EMPTY_EMAIL = "";
